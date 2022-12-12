@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './ViewEvents.css'
+import Card from '../components/Shared/Cards/Card'
 function ViewEvents() {
     const navigate = useNavigate();
     let [eventList, setEventList] = useState([]);
@@ -41,9 +42,11 @@ function ViewEvents() {
             )}
           </div>
   
-        </div>
+        </div> 
       </>
     )
 }
 
 export default ViewEvents
+
+ 

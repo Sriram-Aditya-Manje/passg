@@ -7,6 +7,8 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 import { Component } from "react";
+import '../components/Shared/auth/auth.css'
+
 function EditPage() {
   const { state } = useLocation();
   console.log(state)
@@ -50,29 +52,21 @@ function EditPage() {
   };
 
   return (
-    <div className="row mt-3  ">
-      <p className="display-1 text-success text-center ">EDIT EVENT</p>
-      <div className="col-9 col-sm-10 col-md-6 mx-auto mb-3 p-5 shadow-lg  bg-white rounded">
+    <div className="formContainer">
+        <div className="formWrapper">
+            <span className="formTitle">EDIT EVENT</span>
+        
         <form onSubmit={handleSubmit(onFormSubmit)}>
-          {/* username */}
           
-          {/* email */}
-          <div className="mb-3">
-            <label htmlFor="venue">Venue</label>
-            <input
-              type="text"
-              id="venue"
-              defaultValue={sam.venue}
-              className="form-control"
-              {...register("venue", { required: true })}
-            />
-            {/* validation error msg for email */}
+          <span className="w-100">
+            <label htmlFor="venue" className="h6">Venue</label>
+            <input  type="text"  id="venue"  defaultValue={sam.venue}  className="form-control"  {...register("venue", { required: true })}/>
             {errors.venue?.type === "required" && (
               <p className="text-danger">* Location required</p>
             )}
-          </div>
+          </span>
 
-          <div className="mb-3">
+          <span className="w-100">
             <label htmlFor="d">Date</label>
             <input
               type="date"
@@ -84,6 +78,9 @@ function EditPage() {
             {errors.d?.type === "required" && (
               <p className="text-danger">* Date of event required</p>
             )}
+          </span>
+          
+          <span className="w-100">
             <label htmlFor="t">Time</label>
             <input
               type="time"
@@ -95,6 +92,8 @@ function EditPage() {
             {errors.t?.type === "required" && (
               <p className="text-danger">* time is required</p>
             )}
+          </span>
+
 
             <div className="mb-3 d-flex flex-start">
               {/* male */}
@@ -130,22 +129,17 @@ function EditPage() {
                 <p className="text-danger">* This field is required</p>
               )}
             </div>
-          </div>
-          <div className="mb-3 ">
-            <label htmlFor="phno">Mobile number</label>
-            <input
-              type="number"
-              id="phno"
-              defaultValue={sam.phno}
-              className="form-control"
-              {...register("phno", { required: true })}
-            />
-            {/* validation error msg for email */}
-            {errors.phno?.type === "required" && (
-              <p className="text-danger">* mobile number is required</p>
-            )}
-          </div>
-          <div className="mb-3">
+
+            <span className="w-100">
+              <label htmlFor="phno">Mobile number</label>
+              <input  type="number"  id="phno"  defaultValue={sam.phno}  className="form-control"  {...register("phno", { required: true })}/>
+              {/* validation error msg for email */}
+              {errors.phno?.type === "required" && (
+                <p className="text-danger">* mobile number is required</p>
+              )}
+            </span>
+
+          <div className="w-100">
             <label htmlFor="TicketCost">Cost Per Ticket</label>
             <input
               type="number"
@@ -159,7 +153,8 @@ function EditPage() {
               <p className="text-danger">*Per ticket cost is required</p>
             )}
           </div>
-          <div className="mb-3">
+
+          <div className="w-100">
             <label htmlFor="Tlimit">Estimated no. of attendes</label>
             <input
               type="number"
@@ -178,15 +173,14 @@ function EditPage() {
           {/* submit button */}
           <button
             type="submit"
-            className="btn btn-success d-block m-auto mb-4 col-6"
+            className="button"
           >
             Save changes
           </button>
           
           
         </form>
-        <button  type="submit"
-            className="btn btn-danger d-block m-auto mb-4 col-6" onClick={onFormSubmit1}> delete Event</button>
+        <center><button  type="submit" className="button btn-danger w-25" onClick={onFormSubmit1}> delete Event</button></center>
        
       </div>
     </div>
